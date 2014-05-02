@@ -1,0 +1,41 @@
+# Block the include-only files.
+RewriteEngine On
+RewriteBase /
+RewriteRule ^wp-admin/includes/ - [F,L]
+RewriteRule !^wp-includes/ - [S=3]
+RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
+RewriteRule ^wp-includes/js/tinymce/langs/.+\.php - [F,L]
+RewriteRule ^wp-includes/theme-compat/ - [F,L]
+
+Options -indexes
+
+# protect wpconfig.php
+<files wp-config.php>
+order allow,deny
+deny from all
+</files>
+
+<Files ~ "^.(htaccess|htpasswd)$">
+deny from all
+</Files>
+
+# BEGIN IMAGE THUMBS
+
+<IfModule mod_rewrite.c>
+RewriteEngi
+</IfModule>
+# BEGIN IMAGE THUMBS
+
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+
